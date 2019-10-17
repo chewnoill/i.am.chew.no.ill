@@ -1,0 +1,20 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.abs {
+  position: absolute;
+}
+
+.grid {
+  padding: 20px;
+  font-family: monospace;
+  display: grid;
+  grid-template-columns: repeat(25, 10px);
+}
+
+.letter {
+  height: 10px;
+  width: 10px;
+}
