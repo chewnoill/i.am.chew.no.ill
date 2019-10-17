@@ -12,12 +12,15 @@ const Move = ({ y, x, ...props }) => {
         className="abs"
         {...props}
         variants={{
-          up: { y, transition: { delay: 2, duration: primaryDuration } },
-          over: { x, transition: { duration: secondaryDuration } },
-          down: { y: 0, transition: { duration: primaryDuration } },
-          bup: { y: -y, transition: { delay: 2, duration: primaryDuration } },
-          bover: { x: 0, transition: { duration: secondaryDuration } },
-          bdown: { y: 0, transition: { duration: primaryDuration } }
+          step1: { y, transition: { delay: 2, duration: primaryDuration } },
+          step2: { x, transition: { duration: secondaryDuration } },
+          step3: { y: 0, transition: { duration: primaryDuration } },
+          reverse_step3: {
+            y: -y,
+            transition: { delay: 2, duration: primaryDuration }
+          },
+          reverse_step2: { x: 0, transition: { duration: secondaryDuration } },
+          reverse_step1: { y: 0, transition: { duration: primaryDuration } }
         }}
       />
     </div>
@@ -30,13 +33,13 @@ function App() {
 
   useEffect(() => {
     const run = async () => {
-      await animation.start("up");
-      await animation.start("over");
-      await animation.start("down");
+      await animation.start("step1");
+      await animation.start("step2");
+      await animation.start("step3");
 
-      await animation.start("bup");
-      await animation.start("bover");
-      await animation.start("bdown");
+      await animation.start("reverse_step3");
+      await animation.start("reverse_step2");
+      await animation.start("reverse_step1");
       setState(!state);
     };
     run();
